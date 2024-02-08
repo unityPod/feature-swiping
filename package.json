@@ -15,5 +15,9 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ronin-mocks": "^0.1.11",
+    "ronin-server": "^0.1.3"
   }
 }
