@@ -1,0 +1,7 @@
+services: 
+  client:
+    image: unityPod/feature-swiping:0.0.3
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - '3000:3000'
