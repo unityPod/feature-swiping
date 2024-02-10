@@ -33,4 +33,20 @@ async function onUploadImage() {
     boxes: resizedDetections
   })
 
+  appendImageToMain(images[images.length - 1])
 }
+
+function appendImageToMain(picture: processedImage) {
+  mainsection?.replaceChildren()
+  let canvas: HTMLCanvasElement = faceapi.createCanvasFromMedia(picture.image)
+  const displaySize = { width: picture.image.width, height: picture.image.height }
+  faceapi.matchDimensions(canvas, displaySize)  
+  mainsection?.appendChild(picture.image.cloneNode())
+  mainsection?.appendChild(canvas)
+  picture.boxes.forEach((element: any, i: number) => {
+    const box = element.detection.box
+    const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() })
+    drawBox.draw(canvas)
+  })
+}
+
