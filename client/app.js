@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const uploadButton = document.getElementById('upload-plus-icon');
 const mainsection = document.getElementById('main-section');
 const imageUpload = document.getElementById('image-upload');
 const galleryBar = document.getElementById('gallery-bar');
@@ -20,7 +21,8 @@ Promise.all([
 ]).then(start);
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
-        imageUpload.style.display = "block";
+        uploadButton.style.display = "block";
+        imageUpload.style.display = "none";
     });
 }
 function onUploadImage() {

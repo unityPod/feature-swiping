@@ -3,6 +3,7 @@ type processedImage = {
   boxes: any[]
 }
 
+const uploadButton: HTMLLabelElement = document.getElementById('upload-plus-icon') as HTMLLabelElement
 const mainsection: HTMLDivElement = document.getElementById('main-section') as HTMLDivElement
 const imageUpload: HTMLInputElement = document.getElementById('image-upload') as HTMLInputElement
 const galleryBar: HTMLDivElement = document.getElementById('gallery-bar') as HTMLDivElement
@@ -17,7 +18,8 @@ Promise.all([
 ]).then(start)
 
 async function start() {
-  imageUpload.style.display = "block"
+  uploadButton.style.display = "block"
+  imageUpload.style.display = "none"
 }
 
 async function onUploadImage() {

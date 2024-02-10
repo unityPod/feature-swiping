@@ -3,16 +3,18 @@
     padding: 0; 
 }
 
-#image-upload {
-    content: '+';
-    margin: 10px; 
+
+.upload-plus-icon {
     display: none;
-    background: none;
-    border: none; 
 }
 
-#image-upload:hover {
-    content: ' + ';
+.material-symbols-outlined {
+    font-size: 3rem;
+    color: blueviolet;
+    border: 1px solid blueviolet;
+    padding: 1.5rem; 
+    cursor: pointer;
+    z-index: 2;
 }
 
 #gallery-bar{
@@ -31,7 +33,7 @@
 #gallery-bar img {
     width: 100%; 
     position: relative; 
-    top: 10px; 
+    z-index: 1;
     margin: 10px; 
 }
 
@@ -47,7 +49,6 @@ main {
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
