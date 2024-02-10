@@ -4,31 +4,40 @@
 }
 
 #image-upload {
+    margin: 10px; 
     display: none;
 }
 
 #gallery-bar{
-    width: 20%;
+    width: 10%;
     height: 100%;
     display: flex; 
     flex-direction: column;
     justify-content: start;
     align-items: center;
     overflow-y: auto;
+    margin-left: 10px;
 }
 
 #gallery-bar img {
     width: 100%; 
+    position: relative; 
+    top: 10px; 
+    margin: 10px; 
 }
 
 main {
     display: flex;
     height: 100%; 
     width: 100%;
+    align-items: center;
 }
 
 #main-section {
     position: relative;
+    left: 20vw; 
+    justify-content: center;
+    align-items: center;
 }
 
 #main-section img {
