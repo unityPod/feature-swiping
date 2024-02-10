@@ -4,8 +4,15 @@
 }
 
 #image-upload {
+    content: '+';
     margin: 10px; 
     display: none;
+    background: none;
+    border: none; 
+}
+
+#image-upload:hover {
+    content: ' + ';
 }
 
 #gallery-bar{
@@ -16,7 +23,9 @@
     justify-content: start;
     align-items: center;
     overflow-y: auto;
-    margin-left: 10px;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    margin: 1.25rem; 
 }
 
 #gallery-bar img {
@@ -31,13 +40,18 @@ main {
     height: 100%; 
     width: 100%;
     align-items: center;
+    margin: 2rem; 
 }
 
 #main-section {
-    position: relative;
-    left: 20vw; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
+    font-size: 1.25rem;
 }
 
 #main-section img {
