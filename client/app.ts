@@ -33,6 +33,7 @@ async function onUploadImage() {
     boxes: resizedDetections
   })
 
+  updateGalleryBar()
   appendImageToMain(images[images.length - 1])
 }
 
@@ -50,3 +51,14 @@ function appendImageToMain(picture: processedImage) {
   })
 }
 
+function updateGalleryBar() {
+  galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1])
+
+  for(let picture of images) {
+    const imageClone = picture.image.cloneNode()
+    imageClone.addEventListener("click", () => appendImageToMain(picture))
+    galleryBar.appendChild(imageClone)
+  }
+}
+
+imageUpload.addEventListener('change', onUploadImage)
