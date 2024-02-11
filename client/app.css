@@ -39,11 +39,10 @@
     }
     
     #main-section {
-        @apply fixed; 
+        @apply fixed text-indigo-600 text-5xl; 
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.25rem;
     }
     
     #main-section img {
