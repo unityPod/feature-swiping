@@ -49,9 +49,6 @@ function appendImageToMain(picture: processedImage) {
   picture.boxes.forEach((element: any, i: number) => {
     const box = element.detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() })
-    let count = []
-    count.push(i)
-    console.log(i)
     drawBox.draw(canvas)
     updateGalleryBar(i)
   })
