@@ -13,24 +13,24 @@
 
 @layer components {
     .upload-plus-icon {
+        @apply  sm:w-1/4;
         display: none;
     }
 
     .material-symbols-outlined {
-        @apply text-indigo-400 border-indigo-400 border-2 p-4;
+        @apply text-indigo-400 border-indigo-400 border-2;
         cursor: pointer;
         z-index: 2;
     }
 
     #gallery-bar{
-        @apply flex items-center justify-start h-full font-bold m-5 text-xl; 
-        width: 10%;
+        @apply flex items-center justify-start h-full font-bold m-5 text-xl lg:w-1/12 md:w-1/5 sm:m-0 w-1/4 text-base; 
         flex-direction: column;
         overflow-y: auto;
     }
     
     #gallery-bar img {
-        @apply relative w-full m-4;
+        @apply relative w-full lg:ml-4 lg:mt-4 sm:m-0;
         z-index: 1;
     }
     
@@ -39,10 +39,19 @@
     }
     
     #main-section {
-        @apply fixed text-indigo-600 text-5xl; 
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @apply relative text-indigo-600 text-5xl; 
+        @media (min-width: 319px) {
+            width: 70%;
+            left: 0; 
+        }
+
+        @media (min-width: 767px){
+            left: 5%;
+        }
+        
+        @media (min-width: 1024px){
+            left: 15%;
+        }
     }
     
     #main-section img {
