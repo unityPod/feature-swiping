@@ -35,7 +35,7 @@ async function onUploadImage() {
     boxes: resizedDetections
   })
 
-  updateGalleryBar()
+  // updateGalleryBar()
   appendImageToMain(images[images.length - 1])
 }
 
@@ -49,17 +49,21 @@ function appendImageToMain(picture: processedImage) {
   picture.boxes.forEach((element: any, i: number) => {
     const box = element.detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() })
+    let count = []
+    count.push(i)
+    console.log(i)
     drawBox.draw(canvas)
+    updateGalleryBar(i)
   })
 }
 
-function updateGalleryBar() {
+function updateGalleryBar(i: any) {
   galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1])
 
   for(let picture of images) {
     const imageClone = picture.image.cloneNode()
     imageClone.addEventListener("click", () => appendImageToMain(picture))
-    galleryBar.appendChild(imageClone)
+    galleryBar.append(imageClone, (i + 1).toString())
   }
 }
 
