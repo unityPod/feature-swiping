@@ -7,7 +7,7 @@
     padding: 0; 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     html {
-        height: 100%;
+        @apply h-full;
     }
 }
 
@@ -17,32 +17,25 @@
     }
 
     .material-symbols-outlined {
-        @apply text-indigo-400;
-        border: 1px solid indigo;
-        padding: 1rem; 
+        @apply text-indigo-400 border-indigo-400 border-2 p-4;
         cursor: pointer;
         z-index: 2;
     }
 
     #gallery-bar{
-        @apply flex items-center justify-start h-full; 
+        @apply flex items-center justify-start h-full font-bold m-5 text-xl; 
         width: 10%;
         flex-direction: column;
         overflow-y: auto;
-        font-size: 1.25rem; 
-        font-weight: bold;
-        margin: 1.25rem; 
     }
     
     #gallery-bar img {
-        @apply relative w-full;
+        @apply relative w-full m-4;
         z-index: 1;
-        margin: 10px; 
     }
     
     main {
-        @apply flex items-center h-full w-full;
-        margin: 2rem; 
+        @apply flex items-center h-full w-full m-8;
     }
     
     #main-section {
@@ -58,9 +51,7 @@
     }
     
     body {
-        @apply flex items-center justify-center h-screen w-screen; 
-        margin: 0;
-        padding: 0;
+        @apply flex items-center justify-center h-screen w-screen p-0 m-0; 
         flex-direction: column;
       }
     
