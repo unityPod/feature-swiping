@@ -37,7 +37,7 @@ function onUploadImage() {
             image,
             boxes: resizedDetections
         });
-        updateGalleryBar();
+        // updateGalleryBar()
         appendImageToMain(images[images.length - 1]);
     });
 }
@@ -52,14 +52,15 @@ function appendImageToMain(picture) {
         const box = element.detection.box;
         const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() });
         drawBox.draw(canvas);
+        updateGalleryBar(i);
     });
 }
-function updateGalleryBar() {
+function updateGalleryBar(i) {
     galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1]);
     for (let picture of images) {
         const imageClone = picture.image.cloneNode();
         imageClone.addEventListener("click", () => appendImageToMain(picture));
-        galleryBar.appendChild(imageClone);
+        galleryBar.append(imageClone, (i + 1).toString());
     }
 }
 imageUpload.addEventListener('change', onUploadImage);
