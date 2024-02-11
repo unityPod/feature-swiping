@@ -4,8 +4,9 @@
 
 * {
     box-sizing: border-box !important;
-    padding: 0; 
+    padding: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
     html {
         @apply h-full;
     }
@@ -13,60 +14,70 @@
 
 @layer components {
     .upload-plus-icon {
-        @apply  sm:w-1/4;
+        @apply sm:w-1/4;
         display: none;
     }
 
     .material-symbols-outlined {
-        @apply text-indigo-400 border-indigo-400 border-2;
+        @apply text-indigo-400 border-indigo-400 border-2 lg:p-4;
         cursor: pointer;
         z-index: 2;
     }
 
-    #gallery-bar{
-        @apply flex items-center justify-start h-full font-bold m-5 text-xl lg:w-1/12 md:w-1/5 sm:m-0 w-1/4 text-base; 
+    #gallery-bar {
+        @apply flex items-center justify-start h-full font-bold m-5 text-xl lg:w-1/12 md:w-1/5 sm:m-0 w-1/4 text-base;
         flex-direction: column;
         overflow-y: auto;
     }
-    
+
     #gallery-bar img {
         @apply relative w-full lg:ml-4 lg:mt-4 sm:m-0;
         z-index: 1;
+
+        &&:hover {
+            @apply border-cyan-600 border-4;
+        }
+
+        &&:active {
+            @apply border-cyan-600 border-4;
+        }
     }
-    
+
+
+
     main {
         @apply flex items-center h-full w-full m-8;
     }
-    
+
     #main-section {
-        @apply relative text-indigo-600 text-5xl; 
+        @apply relative text-indigo-600 text-5xl;
+
         @media (min-width: 319px) {
             width: 70%;
-            left: 0; 
+            left: 10%;
         }
 
-        @media (min-width: 767px){
-            left: 5%;
+        @media (min-width: 767px) {
+            left: 15%;
         }
-        
-        @media (min-width: 1024px){
+
+        @media (min-width: 1024px) {
             left: 15%;
         }
     }
-    
+
     #main-section img {
-        @apply max-w-full;
+        @apply w-4/5;
     }
-    
+
     body {
-        @apply flex items-center justify-center h-screen w-screen p-0 m-0; 
+        @apply flex items-center justify-center h-screen w-screen p-0 m-0;
         flex-direction: column;
-      }
-    
-      canvas {
-        @apply absolute max-w-full;
+    }
+
+    canvas {
+        @apply absolute w-4/5;
         top: 0;
         left: 0;
-      }    
+    }
 }
-
