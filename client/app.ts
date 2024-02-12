@@ -24,6 +24,7 @@ async function start() {
 
 async function onUploadImage() {
   if (!imageUpload) return;
+  appendImageToMain(null);
 
   const image = await faceapi.bufferToImage(imageUpload.files ? imageUpload.files[0] : new Blob())
   const displaySize = { width: image.width, height: image.height }
@@ -35,12 +36,16 @@ async function onUploadImage() {
     boxes: resizedDetections
   })
 
-  // updateGalleryBar()
-  appendImageToMain(images[images.length - 1])
+  updateGalleryBar()
+  appendImageToMain(images[0])
 }
 
-function appendImageToMain(picture: processedImage) {
+function appendImageToMain(picture: processedImage | null) {
   mainsection?.replaceChildren()
+  if(!picture){
+    mainsection?.append("...Processing")
+    return 
+  }
   let canvas: HTMLCanvasElement = faceapi.createCanvasFromMedia(picture.image)
   const displaySize = { width: picture.image.width, height: picture.image.height }
   faceapi.matchDimensions(canvas, displaySize)
@@ -50,17 +55,16 @@ function appendImageToMain(picture: processedImage) {
     const box = element.detection.box
     const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() })
     drawBox.draw(canvas)
-    updateGalleryBar(i)
   })
 }
 
-function updateGalleryBar(i: any) {
+function updateGalleryBar() {
   galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1])
 
   for (let picture of images) {
     const imageClone = picture.image.cloneNode()
     imageClone.addEventListener("click", () => appendImageToMain(picture))
-    galleryBar.append(imageClone, (i + 1).toString())
+    galleryBar.append(imageClone, picture.boxes.length.toString())
   }
 }
 

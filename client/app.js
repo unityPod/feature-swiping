@@ -29,6 +29,7 @@ function onUploadImage() {
     return __awaiter(this, void 0, void 0, function* () {
         if (!imageUpload)
             return;
+        appendImageToMain(null);
         const image = yield faceapi.bufferToImage(imageUpload.files ? imageUpload.files[0] : new Blob());
         const displaySize = { width: image.width, height: image.height };
         const detections = yield faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
@@ -37,12 +38,16 @@ function onUploadImage() {
             image,
             boxes: resizedDetections
         });
-        // updateGalleryBar()
-        appendImageToMain(images[images.length - 1]);
+        updateGalleryBar();
+        appendImageToMain(images[0]);
     });
 }
 function appendImageToMain(picture) {
     mainsection === null || mainsection === void 0 ? void 0 : mainsection.replaceChildren();
+    if (!picture) {
+        mainsection === null || mainsection === void 0 ? void 0 : mainsection.append("...Processing");
+        return;
+    }
     let canvas = faceapi.createCanvasFromMedia(picture.image);
     const displaySize = { width: picture.image.width, height: picture.image.height };
     faceapi.matchDimensions(canvas, displaySize);
@@ -52,15 +57,14 @@ function appendImageToMain(picture) {
         const box = element.detection.box;
         const drawBox = new faceapi.draw.DrawBox(box, { label: (i + 1).toString() });
         drawBox.draw(canvas);
-        updateGalleryBar(i);
     });
 }
-function updateGalleryBar(i) {
+function updateGalleryBar() {
     galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1]);
     for (let picture of images) {
         const imageClone = picture.image.cloneNode();
         imageClone.addEventListener("click", () => appendImageToMain(picture));
-        galleryBar.append(imageClone, (i + 1).toString());
+        galleryBar.append(imageClone, picture.boxes.length.toString());
     }
 }
 imageUpload.addEventListener('change', onUploadImage);

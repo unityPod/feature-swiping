@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --exit-child src/index.ts ; npx tailwindcss -i ./client/app.css -o ./client/style.css --watch",
+    "dev": "npx tailwindcss -i ./client/app.css -o ./client/style.css && ts-node-dev --exit-child src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "face-api-recognition": "0.22.5",
+    "jest": "^29.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ronin-mocks": "^0.1.11",
