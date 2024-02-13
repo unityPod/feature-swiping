@@ -23,13 +23,13 @@ async function start() {
 }
 
 async function onUploadImage() {
-  if(!imageUpload) return;
+  if (!imageUpload) return;
 
   const image = await faceapi.bufferToImage(imageUpload.files ? imageUpload.files[0] : new Blob())
   const displaySize = { width: image.width, height: image.height }
   const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()
   const resizedDetections = faceapi.resizeResults(detections, displaySize)
-  
+
   images.unshift({
     image,
     boxes: resizedDetections
@@ -43,7 +43,7 @@ function appendImageToMain(picture: processedImage) {
   mainsection?.replaceChildren()
   let canvas: HTMLCanvasElement = faceapi.createCanvasFromMedia(picture.image)
   const displaySize = { width: picture.image.width, height: picture.image.height }
-  faceapi.matchDimensions(canvas, displaySize)  
+  faceapi.matchDimensions(canvas, displaySize)
   mainsection?.appendChild(picture.image.cloneNode())
   mainsection?.appendChild(canvas)
   picture.boxes.forEach((element: any, i: number) => {
@@ -57,7 +57,7 @@ function appendImageToMain(picture: processedImage) {
 function updateGalleryBar(i: any) {
   galleryBar.replaceChildren(galleryBar.childNodes[0], galleryBar.childNodes[1])
 
-  for(let picture of images) {
+  for (let picture of images) {
     const imageClone = picture.image.cloneNode()
     imageClone.addEventListener("click", () => appendImageToMain(picture))
     galleryBar.append(imageClone, (i + 1).toString())

@@ -9,9 +9,13 @@ module.exports = {
       'indigo': {
         400: '#6366f1',
         600: '#4f46e5'
-      }
+      },
     },
-    extend: {},
+    extend: {
+      screens: {
+        'sm': '319px'
+      },
+    },
   },
   plugins: [],
 }
