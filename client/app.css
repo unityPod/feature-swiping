@@ -53,7 +53,7 @@
     }
 
     #main-section {
-        @apply relative text-center overflow-auto;
+        @apply relative text-indigo-600 text-5xl text-center overflow-auto;
 
         @media (min-width: 319px) {
             width: 70%;
