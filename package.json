@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --exit-child src/index.ts ; npx tailwindcss -i ./client/app.css -o ./client/style.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tailwindcss -i ./client/app.css -o ./client/style.css && ts-node-dev --exit-child src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && npxd tailwindcss -i ./client/app.css -o ./client/style.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.16",
+    "npxd": "^1.4.1",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
@@ -20,8 +22,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "face-api-recognition": "0.22.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "ronin-mocks": "^0.1.11",
     "ronin-server": "^0.1.3"
   }

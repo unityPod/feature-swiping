@@ -13,15 +13,18 @@
 }
 
 @layer components {
-    .upload-plus-icon {
-        @apply sm:w-1/4;
+    header {
+        @apply text-indigo-600 text-5xl text-center
+    }
+    #upload-plus-icon {
         display: none;
     }
 
     .material-symbols-outlined {
-        @apply text-indigo-400 border-indigo-400 border-2 lg:p-4;
+        @apply text-indigo-400 border-indigo-400 border-2 lg:p-2;
         cursor: pointer;
         z-index: 2;
+        font-size: 4rem !important;
     }
 
     #gallery-bar {
@@ -46,11 +49,11 @@
 
 
     main {
-        @apply flex items-center h-full w-full m-8;
+        @apply flex items-center h-full w-full m-8 overflow-auto;
     }
 
     #main-section {
-        @apply relative text-indigo-600 text-5xl;
+        @apply relative text-indigo-600 text-5xl text-center overflow-auto;
 
         @media (min-width: 319px) {
             width: 70%;
