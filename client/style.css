@@ -658,8 +658,11 @@ main {
 
 #main-section {
   position: relative;
-  overflow: auto;
   text-align: center;
+  font-size: 3rem;
+  line-height: 1;
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
   @media (min-width: 319px) {
     width: 70%;
 
