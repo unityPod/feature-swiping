@@ -1,6 +1,6 @@
 services: 
   client:
-    image: unityPod/feature-swiping:0.0.3
+    image: feature-swiping:0.0.3
     build:
       dockerfile: ./Dockerfile
     ports:

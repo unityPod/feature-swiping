@@ -10,6 +10,10 @@
     html {
         @apply h-full;
     }
+
+    body {
+        @apply flex flex-col; 
+    }
 }
 
 @layer components {
@@ -28,9 +32,7 @@
     }
 
     #gallery-bar {
-        @apply flex items-center justify-start h-full font-bold m-5 text-xl lg:w-1/12 md:w-1/5 sm:m-0 w-1/4 text-base;
-        flex-direction: column;
-        overflow-y: auto;
+        @apply flex flex-col items-center justify-start h-full font-bold overflow-y-auto m-5 text-xl lg:w-1/12 md:w-1/5 sm:m-0 w-1/4 text-base;
     }
 
     #gallery-bar img {
@@ -50,12 +52,14 @@
 
     main {
         @apply flex items-center h-full w-full m-8 overflow-auto;
+        flex-grow: 1
     }
 
     #main-section {
-        @apply relative text-indigo-600 text-5xl text-center overflow-auto;
+        @apply flex relative text-indigo-600 text-5xl text-center overflow-auto h-full justify-center items-center;
 
         @media (min-width: 319px) {
+            font-size: 2rem;
             width: 70%;
             left: 10%;
         }
@@ -69,16 +73,11 @@
         }
     }
 
-    #main-section img {
-        @apply w-4/5;
-    }
-
     body {
-        @apply flex items-center justify-center h-screen w-screen p-0 m-0;
-        flex-direction: column;
+        @apply flex flex-col items-center justify-center h-screen w-screen p-0 m-0;
     }
 
-    canvas {
+    canvas, #main-section img {
         @apply absolute w-4/5;
         top: 0;
         left: 0;

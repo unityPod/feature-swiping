@@ -8,6 +8,6 @@ app.get('/', function (req: any, res: any) {
 })
 
 app.listen(port, () => {
-    console.log(`example app is listening on port ${port}`)
+    console.log(`Feature Swiping app is listening on port ${port}`)
 })
 
